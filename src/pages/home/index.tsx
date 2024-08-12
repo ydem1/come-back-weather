@@ -1,14 +1,9 @@
 import React, { FC } from "react";
-import { MediaCard } from "src/components/MediaCard";
+import { MediaCards } from "src/page-components/home/MediaCards";
 
 const Home: FC = () => (
   <main>
-    <section className="container">
-      <MediaCard />
-      <MediaCard />
-      <MediaCard />
-      <MediaCard />
-    </section>
+    <MediaCards />
   </main>
 );
 

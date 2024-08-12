@@ -8,8 +8,8 @@ import Typography from "@mui/material/Typography";
 export const MediaCard = () => (
   <Card className="max-w-80">
     <CardMedia
-      className="h-20"
-      image="/static/images/cards/contemplative-reptile.jpg"
+      className="h-80"
+      image="https://mui.com/static/images/cards/contemplative-reptile.jpg"
       title="green iguana"
     />
     <CardContent>

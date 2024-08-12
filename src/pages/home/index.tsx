@@ -1,5 +1,5 @@
 import React, { FC } from "react";
 
-const Home: FC = () => <h2>Home</h2>;
+const Home: FC = () => <h1 className="text-3xl font-bold underline">Home</h1>;
 
 export default Home;

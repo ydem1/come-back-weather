@@ -15,3 +15,7 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.container {
+  @apply max-w-360 w-full box-border mx-auto px-25 overflow-hidden;
+}

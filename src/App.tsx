@@ -6,9 +6,7 @@ import CustomHistoryRouter from "./routes/CustomHistoryRouter";
 function App(): ReactElement {
   return (
     <CustomHistoryRouter history={history}>
-      <div className="App flex flex-col h-screen overflow-y-auto overflow-x-hidden">
-        <AppRoutes />
-      </div>
+      <AppRoutes />
     </CustomHistoryRouter>
   );
 }

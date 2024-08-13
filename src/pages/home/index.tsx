@@ -1,12 +1,11 @@
 import React, { FC } from "react";
-import { Header } from "src/components/Header";
+import { PageWrapper } from "src/components/Layouts/PageWrapper";
 import { MediaCards } from "src/page-components/home/MediaCards";
 
 const Home: FC = () => (
-  <main>
-    <Header />
+  <PageWrapper>
     <MediaCards />
-  </main>
+  </PageWrapper>
 );
 
 export default Home;

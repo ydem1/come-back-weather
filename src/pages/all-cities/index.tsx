@@ -1,11 +1,10 @@
 import React, { FC } from "react";
-import { Header } from "src/components/Header";
+import { PageWrapper } from "src/components/Layouts/PageWrapper";
 
 const AllCities: FC = () => (
-  <main>
-    <Header />
+  <PageWrapper>
     <h2>All Cities</h2>
-  </main>
+  </PageWrapper>
 );
 
 export default AllCities;

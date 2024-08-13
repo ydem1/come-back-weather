@@ -3,11 +3,6 @@ import { instance } from "src/services/api-client";
 
 export const CITIES_SLICE_NAME = "cities";
 
-export const getCitiesAsync = createAsyncThunk(
-  `${CITIES_SLICE_NAME}/fetchCities`,
-  async (params, { rejectWithValue }) => {}
-);
-
 interface getCityAsyncParams {
   q: string;
   limit?: number;

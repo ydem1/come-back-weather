@@ -23,7 +23,9 @@ export const getCityReducer = (
       );
 
       if (!cityExists) {
-        state.data = [...state.data, action.payload];
+        const newData = [...state.data, action.payload];
+        state.data = newData;
+        localStorage.setItem("cities", JSON.stringify(newData));
       } else {
         // додати вивід помилки
         console.log("Місто вже додано.");

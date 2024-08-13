@@ -1,5 +1,5 @@
 import { PayloadAction, ActionReducerMapBuilder } from "@reduxjs/toolkit";
-import { ICity } from "src/types/city";
+import { WeatherData } from "src/types/weatherData";
 import { CitiesState } from "./slice";
 import { getCityAsync } from "./actions";
 
@@ -15,7 +15,7 @@ export const getCityReducer = (
 
   builder.addCase(
     getCityAsync.fulfilled,
-    (state, action: PayloadAction<ICity>) => {
+    (state, action: PayloadAction<WeatherData>) => {
       state.isLoading = false;
 
       const cityExists = state.data.some(

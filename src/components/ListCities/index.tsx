@@ -6,22 +6,22 @@ import ListItemText from "@mui/material/ListItemText";
 import ListItemAvatar from "@mui/material/ListItemAvatar";
 import Avatar from "@mui/material/Avatar";
 import Typography from "@mui/material/Typography";
-import { ICity } from "src/types/city";
+import { WeatherData } from "src/types/weatherData";
 
 interface Props {
-  cities: ICity[];
+  cities: WeatherData[];
 }
 
 export const ListCities: React.FC<Props> = ({ cities }) => (
   <List>
-    {cities.map((city) => (
-      <React.Fragment key={city.name}>
+    {cities.map(({ name, coord }) => (
+      <React.Fragment key={name}>
         <ListItem alignItems="flex-start">
           <ListItemAvatar>
-            <Avatar alt={city.name} src="./images/logo.png" />
+            <Avatar alt={name} src="./images/logo.png" />
           </ListItemAvatar>
           <ListItemText
-            primary={city.name}
+            primary={name}
             secondary={
               <React.Fragment>
                 <Typography
@@ -32,7 +32,7 @@ export const ListCities: React.FC<Props> = ({ cities }) => (
                 >
                   Coordinates -
                 </Typography>
-                {` lat: ${city.lat} lon: ${city.lon}`}
+                {` lat: ${coord.lat} lon: ${coord.lon}`}
               </React.Fragment>
             }
           />

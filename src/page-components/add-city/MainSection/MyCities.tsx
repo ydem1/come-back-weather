@@ -6,6 +6,8 @@ import { ListCities } from "src/components/ListCities";
 export const MyCities: FC = () => {
   const cities = useAppSelector(selectorCities);
 
+  console.log(cities)
+
   return (
     <div className="flex-1">
       <h2>My Cities</h2>

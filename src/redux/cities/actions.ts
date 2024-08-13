@@ -1,6 +1,8 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import { delay } from "src/helpers/delay";
 import { instance } from "src/services/api-client";
+import { ICity } from "src/types/city";
+import { WeatherData } from "src/types/weatherData";
 
 export const CITIES_SLICE_NAME = "cities";
 
@@ -15,18 +17,32 @@ export const getCityAsync = createAsyncThunk(
     try {
       await delay();
 
-      const { data } = await instance.get("/geo/1.0/direct", {
-        params,
-      });
-
-      const res = data[0];
+      const { data: city } = await instance.get<Array<ICity>>(
+        "/geo/1.0/direct",
+        {
+          params,
+        }
+      );
 
       // додати вивід помилки
-      if (!res) {
+      if (!city[0]) {
         throw new Error();
       }
 
-      return res;
+      const { lat, lon } = city[0];
+
+      const { data } = await instance.get<WeatherData>(
+        "/data/2.5/weather/",
+        {
+          params: {
+            lat,
+            lon,
+            units: "metric",
+          },
+        }
+      );
+
+      return data;
     } catch ({ response }) {
       const errorText = response?.data?.message;
 

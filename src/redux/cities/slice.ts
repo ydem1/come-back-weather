@@ -1,13 +1,13 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { CITIES_SLICE_NAME } from "./actions";
 import { getCityReducer } from "./reducers";
-import { ICity } from "src/types/city";
+import { WeatherData } from "src/types/weatherData";
 
-const getInitialData = (): ICity[] => {
+const getInitialData = (): WeatherData[] => {
   const storedData = localStorage.getItem("cities");
   if (storedData) {
     try {
-      return JSON.parse(storedData) as ICity[];
+      return JSON.parse(storedData) as WeatherData[];
     } catch (error) {
       console.error("Error parsing localStorage data:", error);
       return [];
@@ -18,7 +18,7 @@ const getInitialData = (): ICity[] => {
 
 export interface CitiesState {
   isLoading: boolean;
-  data: ICity[];
+  data: WeatherData[];
 }
 
 const initialState: CitiesState = {

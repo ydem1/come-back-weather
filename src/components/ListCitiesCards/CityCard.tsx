@@ -5,7 +5,7 @@ import CardMedia from "@mui/material/CardMedia";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 
-export const MediaCard = () => (
+export const CityCard = () => (
   <Card className="max-w-80">
     <CardMedia
       className="h-80"

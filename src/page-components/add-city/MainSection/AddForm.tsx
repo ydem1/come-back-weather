@@ -18,6 +18,10 @@ export const AddForm: FC = () => {
     setCityQuery("");
   };
 
+  const handleReset = async () => {
+    setCityQuery("");
+  };
+
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setCityQuery(event.target.value);
   };
@@ -26,7 +30,7 @@ export const AddForm: FC = () => {
     <div className="flex-1">
       <h2>Add City</h2>
 
-      <form className="my-5" onSubmit={handleSubmit}>
+      <form className="my-5" onSubmit={handleSubmit} onReset={handleReset}>
         <TextField
           className="w-full"
           id="city-query"

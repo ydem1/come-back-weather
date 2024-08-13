@@ -5,7 +5,7 @@ const LOGO_IMAGE_ALT_TEXT = "Weather ComeBack";
 
 export const Logo = () => (
   <Link
-    className="flex gap-5 w-max bg-blue-500 px-5 py-3 text-28 text-white rounded-lg hover:opacity-80"
+    className="flex gap-5 w-max bg-blue-500 px-5 py-3 text-28 text-white rounded-lg"
     to={PATHNAMES.HOME}
   >
     <img className="w-10" src="./images/logo.png" alt={LOGO_IMAGE_ALT_TEXT} />

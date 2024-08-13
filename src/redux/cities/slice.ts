@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { CITIES_SLICE_NAME } from "./actions";
-import { getCityReducer } from "./reducers";
+import { addCityReducer } from "./reducers";
 import { CityWithWeatherData } from "src/types/cityWithWeatherData";
 
 const getInitialData = (): CityWithWeatherData[] => {
@@ -31,6 +31,6 @@ export const { reducer: cities } = createSlice({
   initialState,
   reducers: {},
   extraReducers(builder) {
-    getCityReducer(builder);
+    addCityReducer(builder);
   },
 });

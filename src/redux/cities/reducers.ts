@@ -1,20 +1,20 @@
 import { PayloadAction, ActionReducerMapBuilder } from "@reduxjs/toolkit";
 import { CityWithWeatherData } from "src/types/cityWithWeatherData";
 import { CitiesState } from "./slice";
-import { getCityAsync } from "./actions";
+import { addCityAsync } from "./actions";
 
 type ActionReducerMapBuilderWithCitiesState =
   ActionReducerMapBuilder<CitiesState>;
 
-export const getCityReducer = (
+export const addCityReducer = (
   builder: ActionReducerMapBuilderWithCitiesState
 ) => {
-  builder.addCase(getCityAsync.pending, (state) => {
+  builder.addCase(addCityAsync.pending, (state) => {
     state.isLoading = true;
   });
 
   builder.addCase(
-    getCityAsync.fulfilled,
+    addCityAsync.fulfilled,
     (state, action: PayloadAction<CityWithWeatherData>) => {
       state.isLoading = false;
 
@@ -33,7 +33,7 @@ export const getCityReducer = (
     }
   );
 
-  builder.addCase(getCityAsync.rejected, (state) => {
+  builder.addCase(addCityAsync.rejected, (state) => {
     state.isLoading = false;
   });
 };

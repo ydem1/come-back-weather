@@ -2,7 +2,7 @@ import React, { FC, useState } from "react";
 import { Button, TextField } from "@mui/material";
 import LoadingButton from "@mui/lab/LoadingButton";
 import { useAppDispatch, useAppSelector } from "src/hooks/redux";
-import { getCityAsync } from "src/redux/cities/actions";
+import { addCityAsync } from "src/redux/cities/actions";
 import { selectorCitiesLoading } from "src/redux/cities/selector";
 
 export const AddForm: FC = () => {
@@ -14,7 +14,7 @@ export const AddForm: FC = () => {
 
   const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
-    dispatch(getCityAsync({ q: cityQuery, limit: 1 }));
+    dispatch(addCityAsync({ q: cityQuery, limit: 1 }));
     setCityQuery("");
   };
 

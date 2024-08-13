@@ -6,14 +6,14 @@ import { CityWithWeatherData } from "src/types/cityWithWeatherData";
 
 export const CITIES_SLICE_NAME = "cities";
 
-interface getCityAsyncParams {
+interface addCityAsyncParams {
   q: string;
   limit?: number;
 }
 
-export const getCityAsync = createAsyncThunk(
+export const addCityAsync = createAsyncThunk(
   `${CITIES_SLICE_NAME}/fetchCity`,
-  async (params: getCityAsyncParams, { rejectWithValue }) => {
+  async (params: addCityAsyncParams, { rejectWithValue }) => {
     try {
       await delay();
 

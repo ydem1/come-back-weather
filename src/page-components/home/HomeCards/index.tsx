@@ -1,10 +1,10 @@
 import React, { FC } from "react";
-import { ListCitiesCards } from "src/components/ListCitiesCards";
+import { ListWeatherCards } from "src/components/ListWeatherCards";
 
 export const HomeCards: FC = () => (
   <section className="container">
     <h2>Home Cards</h2>
 
-    <ListCitiesCards />
+    <ListWeatherCards citiesWeather={[]} />
   </section>
 );

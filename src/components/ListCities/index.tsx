@@ -18,7 +18,7 @@ export const ListCities: React.FC<Props> = ({ cities }) => (
       <React.Fragment key={city.name}>
         <ListItem alignItems="flex-start">
           <ListItemAvatar>
-            <Avatar alt={city.name} src="/static/images/avatar/1.jpg" />
+            <Avatar alt={city.name} src="./images/logo.png" />
           </ListItemAvatar>
           <ListItemText
             primary={city.name}

@@ -1,4 +1,4 @@
-import { createAsyncThunk } from "@reduxjs/toolkit";
+import { createAction, createAsyncThunk } from "@reduxjs/toolkit";
 import { delay } from "src/helpers/delay";
 import { instance } from "src/services/api-client";
 import { ICity } from "src/types/city";
@@ -6,14 +6,14 @@ import { CityWithWeatherData } from "src/types/cityWithWeatherData";
 
 export const CITIES_SLICE_NAME = "cities";
 
-interface addCityAsyncParams {
+interface AddCityAsyncParams {
   q: string;
   limit?: number;
 }
 
 export const addCityAsync = createAsyncThunk(
   `${CITIES_SLICE_NAME}/addCity`,
-  async (params: addCityAsyncParams, { rejectWithValue }) => {
+  async (params: AddCityAsyncParams, { rejectWithValue }) => {
     try {
       await delay();
 
@@ -49,4 +49,10 @@ export const addCityAsync = createAsyncThunk(
       return rejectWithValue(errorText);
     }
   }
+);
+
+type RemoveCityPayload = number;
+
+export const removeCity = createAction<RemoveCityPayload>(
+  `${CITIES_SLICE_NAME}/removeCity`
 );

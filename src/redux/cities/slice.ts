@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 import { localStorageCities } from "src/localStorage/cities";
 import { CityWithWeatherData } from "src/types/cityWithWeatherData";
 import { CITIES_SLICE_NAME } from "./actions";
-import { addCityReducer } from "./reducers";
+import { addCityReducer, removeCityReducer } from "./reducers";
 
 export interface CitiesState {
   isLoading: boolean;
@@ -20,5 +20,6 @@ export const { reducer: cities } = createSlice({
   reducers: {},
   extraReducers(builder) {
     addCityReducer(builder);
+    removeCityReducer(builder);
   },
 });

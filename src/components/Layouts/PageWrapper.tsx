@@ -1,7 +1,7 @@
 import React, { FC, ReactNode } from "react";
 import cn from "classnames";
 import { Header } from "../Header";
-// import { Footer } from "../Footer";
+import { Footer } from "../Footer";
 
 interface Props {
   children: ReactNode;
@@ -14,9 +14,9 @@ export const PageWrapper: FC<Props> = ({
   className,
   mainClassName,
 }) => (
-  <div className={cn("flex flex-col", className)}>
+  <div className={cn("flex flex-col h-screen", className)}>
     <Header />
-    <main className={mainClassName}>{children}</main>
-    {/* <Footer isShown={isShownFooter} /> */}
+    <main className={cn("flex-1", mainClassName)}>{children}</main>
+    <Footer />
   </div>
 );

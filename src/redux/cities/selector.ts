@@ -7,3 +7,9 @@ export const selectorCities = createSelector(
   selectorCitiesState,
   (citiesState) => citiesState.data
 );
+
+export const selectorCitiesLoading = createSelector(
+  selectorCitiesState,
+  (citiesState) => citiesState.isLoading
+);
+

@@ -1,4 +1,5 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
+import { delay } from "src/helpers/delay";
 import { instance } from "src/services/api-client";
 
 export const CITIES_SLICE_NAME = "cities";
@@ -12,6 +13,8 @@ export const getCityAsync = createAsyncThunk(
   `${CITIES_SLICE_NAME}/fetchCity`,
   async (params: getCityAsyncParams, { rejectWithValue }) => {
     try {
+      await delay();
+
       const { data } = await instance.get("/geo/1.0/direct", {
         params,
       });
@@ -23,7 +26,7 @@ export const getCityAsync = createAsyncThunk(
         throw new Error();
       }
 
-      return data[0];
+      return res;
     } catch ({ response }) {
       const errorText = response?.data?.message;
 

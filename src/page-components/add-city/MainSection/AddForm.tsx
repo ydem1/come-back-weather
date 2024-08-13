@@ -1,10 +1,14 @@
 import React, { FC, useState } from "react";
 import { Button, TextField } from "@mui/material";
-import { useAppDispatch } from "src/hooks/redux";
+import LoadingButton from "@mui/lab/LoadingButton";
+import { useAppDispatch, useAppSelector } from "src/hooks/redux";
 import { getCityAsync } from "src/redux/cities/actions";
+import { selectorCitiesLoading } from "src/redux/cities/selector";
 
 export const AddForm: FC = () => {
   const dispatch = useAppDispatch();
+
+  const isLoading = useAppSelector(selectorCitiesLoading);
 
   const [cityQuery, setCityQuery] = useState("");
 
@@ -30,12 +34,13 @@ export const AddForm: FC = () => {
           variant="standard"
           value={cityQuery}
           onChange={handleInputChange}
+          required
         />
 
         <div className="flex gap-5 mt-5">
-          <Button type="submit" variant="contained">
+          <LoadingButton type="submit" variant="contained" loading={isLoading}>
             Submit
-          </Button>
+          </LoadingButton>
           <Button type="reset" variant="outlined">
             Cancel
           </Button>

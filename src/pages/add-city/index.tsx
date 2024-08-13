@@ -1,9 +1,12 @@
 import React, { FC } from "react";
+import { AddCityForm } from "src/page-components/add-city/AddCityForm";
+import { MyCities } from "src/page-components/add-city/MyCities";
 import { PageWrapper } from "src/components/Layouts/PageWrapper";
 
 const AddCity: FC = () => (
-  <PageWrapper>
-    <h2>Add City</h2>
+  <PageWrapper mainClassName="flex flex-col gap-10">
+    <AddCityForm />
+    <MyCities />
   </PageWrapper>
 );
 

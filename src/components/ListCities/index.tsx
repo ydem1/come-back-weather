@@ -6,10 +6,10 @@ import ListItemText from "@mui/material/ListItemText";
 import ListItemAvatar from "@mui/material/ListItemAvatar";
 import Avatar from "@mui/material/Avatar";
 import Typography from "@mui/material/Typography";
-import { WeatherData } from "src/types/weatherData";
+import { CityWithWeatherData } from "src/types/cityWithWeatherData";
 
 interface Props {
-  cities: WeatherData[];
+  cities: CityWithWeatherData[];
 }
 
 export const ListCities: React.FC<Props> = ({ cities }) => (

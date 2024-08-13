@@ -1,9 +1,9 @@
 import React, { FC } from "react";
 import { WeatherCard } from "./WeatherCard";
-import { WeatherData } from "src/types/weatherData";
+import { CityWithWeatherData } from "src/types/cityWithWeatherData";
 
 interface Props {
-  citiesWeather: WeatherData[];
+  citiesWeather: CityWithWeatherData[];
 }
 
 export const ListWeatherCards: FC<Props> = ({ citiesWeather }) => (

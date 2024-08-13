@@ -2,7 +2,7 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 import { delay } from "src/helpers/delay";
 import { instance } from "src/services/api-client";
 import { ICity } from "src/types/city";
-import { WeatherData } from "src/types/weatherData";
+import { CityWithWeatherData } from "src/types/cityWithWeatherData";
 
 export const CITIES_SLICE_NAME = "cities";
 
@@ -31,7 +31,7 @@ export const getCityAsync = createAsyncThunk(
 
       const { lat, lon } = city[0];
 
-      const { data } = await instance.get<WeatherData>(
+      const { data } = await instance.get<CityWithWeatherData>(
         "/data/2.5/weather/",
         {
           params: {

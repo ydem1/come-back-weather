@@ -1,4 +1,4 @@
-export interface WeatherData {
+export interface CityWithWeatherData {
   coord: {
     lon: number;
     lat: number;

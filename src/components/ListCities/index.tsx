@@ -1,19 +1,22 @@
 import * as React from "react";
+import { Link } from "react-router-dom";
 import {
   List,
   ListItem,
   ListItemAvatar,
-  Button,
   Avatar,
   ListItemText,
   Typography,
+  Button,
   Divider,
 } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
 import { useAppDispatch } from "src/hooks/redux";
 import { removeCity } from "src/redux/cities/actions";
 import { getImageUrl } from "src/utils/getImageUrl";
+import { getItemPath } from "src/utils/getItemPath";
 import { CityWithWeatherData } from "src/types/cityWithWeatherData";
+import { PATHNAMES } from "src/constants/routes";
 
 interface Props {
   cities: CityWithWeatherData[];
@@ -32,7 +35,9 @@ export const ListCities: React.FC<Props> = ({ cities }) => {
         <React.Fragment key={id}>
           <ListItem alignItems="flex-start">
             <ListItemAvatar>
-              <Avatar alt={name} src={getImageUrl(weather[0].icon)} />
+              <Link to={getItemPath(PATHNAMES.CITY_ITEM, { id })}>
+                <Avatar alt={name} src={getImageUrl(weather[0].icon)} />
+              </Link>
             </ListItemAvatar>
             <ListItemText
               primary={name}

@@ -11,6 +11,7 @@ export const ListWeatherCards: FC<Props> = ({ citiesWeather }) => (
     {citiesWeather.map(({ id, name, weather, main, wind }) => (
       <li key={id}>
         <WeatherCard
+          id={id}
           cityName={name}
           img={weather[0].icon}
           temp={main.temp}

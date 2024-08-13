@@ -24,11 +24,6 @@ export const addCityAsync = createAsyncThunk(
         }
       );
 
-      // додати вивід помилки
-      if (!city[0]) {
-        throw new Error();
-      }
-
       const { lat, lon } = city[0];
 
       const { data } = await instance.get<CityWithWeatherData>(

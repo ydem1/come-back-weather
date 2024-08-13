@@ -1,6 +1,6 @@
 import React, { FC } from "react";
 import { useRoutes } from "react-router-dom";
-import { Home, MyCities, AddCity, NotFound } from "src/pages";
+import { Home, MyCities, AddCity, NotFound, CityItem } from "src/pages";
 import { PATHNAMES } from "src/constants/routes";
 
 const ROUTES = [
@@ -15,6 +15,10 @@ const ROUTES = [
   {
     element: <AddCity />,
     path: PATHNAMES.ALL_CITIY,
+  },
+  {
+    element: <CityItem />,
+    path: PATHNAMES.CITY_ITEM,
   },
   {
     element: <NotFound />,

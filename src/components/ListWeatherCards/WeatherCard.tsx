@@ -5,36 +5,46 @@ import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
-import { WeatherData } from "src/types/weatherData";
 import { getImageUrl } from "src/utils/getImageUrl";
 
-export const WeatherCard: FC<WeatherData> = ({
-  name,
-  weather,
-  wind,
-  main,
+interface Props {
+  cityName: string;
+  img: string;
+  temp: number;
+  status: string;
+  description: string;
+  windSpeed: number;
+}
+
+export const WeatherCard: FC<Props> = ({
+  cityName,
+  img,
+  temp,
+  status,
+  description,
+  windSpeed,
 }) => (
   <Card>
     <CardMedia
       className="w-full object-contain h-52"
-      image={getImageUrl(weather[0].icon)}
-      title={name}
+      image={getImageUrl(img)}
+      title={cityName}
     />
     <CardContent>
       <Typography gutterBottom variant="h5" component="div">
-        {name}
+        {cityName}
       </Typography>
       <Typography variant="body2" color="text.secondary">
-        {`Speed of wind: ${main.temp}`}
+        {`${temp} \u00B0C`}
       </Typography>
       <Typography variant="body2" color="text.secondary">
-        {weather[0].main}
+        {status}
       </Typography>
       <Typography variant="body2" color="text.secondary">
-        {weather[0].description}
+        {description}
       </Typography>
       <Typography variant="body2" color="text.secondary">
-        {`Speed of wind: ${wind.speed}`}
+        {`Speed of wind: ${windSpeed}`}
       </Typography>
     </CardContent>
     <CardActions>

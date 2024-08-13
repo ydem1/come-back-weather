@@ -1,12 +1,16 @@
 import React, { FC, useState } from "react";
 import { Button, TextField } from "@mui/material";
+import { getCity } from "src/services/getCity";
 
 export const AddForm: FC = () => {
   const [cityQuery, setCityQuery] = useState("");
 
-  const handleSubmit = (event: React.FormEvent) => {
+  const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
-    console.log(cityQuery);
+
+    getCity(cityQuery).then((newCity) => {
+      console.log(newCity);
+    });
   };
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {

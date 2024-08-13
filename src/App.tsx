@@ -1,13 +1,12 @@
 import React, { ReactElement } from "react";
+import { BrowserRouter as Router } from "react-router-dom";
 import AppRoutes from "./routes/Router";
-import { history } from "./services/history";
-import CustomHistoryRouter from "./routes/CustomHistoryRouter";
 
 function App(): ReactElement {
   return (
-    <CustomHistoryRouter history={history}>
+    <Router>
       <AppRoutes />
-    </CustomHistoryRouter>
+    </Router>
   );
 }
 

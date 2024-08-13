@@ -12,6 +12,7 @@ import {
 import CloseIcon from "@mui/icons-material/Close";
 import { useAppDispatch } from "src/hooks/redux";
 import { removeCity } from "src/redux/cities/actions";
+import { getImageUrl } from "src/utils/getImageUrl";
 import { CityWithWeatherData } from "src/types/cityWithWeatherData";
 
 interface Props {
@@ -27,11 +28,11 @@ export const ListCities: React.FC<Props> = ({ cities }) => {
 
   return (
     <List>
-      {cities.map(({ id, name, coord }) => (
+      {cities.map(({ id, weather, name, coord }) => (
         <React.Fragment key={id}>
           <ListItem alignItems="flex-start">
             <ListItemAvatar>
-              <Avatar alt={name} src="./images/logo.png" />
+              <Avatar alt={name} src={getImageUrl(weather[0].icon)} />
             </ListItemAvatar>
             <ListItemText
               primary={name}

@@ -1,10 +1,10 @@
 import { configureStore, combineReducers } from "@reduxjs/toolkit";
 
-import { clones } from "./clones/slice";
+import { cities } from "./cities/slice";
 
 export const store = configureStore({
   reducer: combineReducers({
-    clones,
+    cities,
   }),
 });
 

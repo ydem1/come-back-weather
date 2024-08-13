@@ -1,16 +1,17 @@
 import React, { FC, useState } from "react";
 import { Button, TextField } from "@mui/material";
-import { getCity } from "src/services/getCity";
+import { useAppDispatch } from "src/hooks/redux";
+import { getCityAsync } from "src/redux/cities/actions";
 
 export const AddForm: FC = () => {
+  const dispatch = useAppDispatch();
+
   const [cityQuery, setCityQuery] = useState("");
 
   const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
-
-    getCity(cityQuery).then((newCity) => {
-      console.log(newCity);
-    });
+    dispatch(getCityAsync({ q: cityQuery, limit: 1 }));
+    setCityQuery("");
   };
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {

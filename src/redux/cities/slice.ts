@@ -1,22 +1,23 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { CLONES_SLICE_NAME } from "./actions";
-import { getClonesReducer } from "./reducers";
+import { CITIES_SLICE_NAME } from "./actions";
+import { getCityReducer } from "./reducers";
+import { ICity } from "src/types/city";
 
-export interface ClonesState {
+export interface CitiesState {
   isLoading: boolean;
-  data: number[] | null;
+  data: ICity[];
 }
 
-const initialState: ClonesState = {
+const initialState: CitiesState = {
   isLoading: false,
-  data: null,
+  data: [],
 };
 
-export const { reducer: clones } = createSlice({
-  name: CLONES_SLICE_NAME,
+export const { reducer: cities } = createSlice({
+  name: CITIES_SLICE_NAME,
   initialState,
   reducers: {},
   extraReducers(builder) {
-    getClonesReducer(builder);
+    getCityReducer(builder);
   },
 });

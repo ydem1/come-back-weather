@@ -25,7 +25,7 @@ export const PopularCities: FC = () => {
 
   return (
     <section className="container">
-      <h2>Popular Cities</h2>
+      <h2>Popular Cities Cards</h2>
 
       <ListWeatherCards citiesWeather={popularCities} />
     </section>

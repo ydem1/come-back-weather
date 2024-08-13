@@ -12,7 +12,7 @@ interface addCityAsyncParams {
 }
 
 export const addCityAsync = createAsyncThunk(
-  `${CITIES_SLICE_NAME}/fetchCity`,
+  `${CITIES_SLICE_NAME}/addCity`,
   async (params: addCityAsyncParams, { rejectWithValue }) => {
     try {
       await delay();

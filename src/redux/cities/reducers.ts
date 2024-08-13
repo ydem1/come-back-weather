@@ -1,4 +1,5 @@
 import { PayloadAction, ActionReducerMapBuilder } from "@reduxjs/toolkit";
+import { localStorageCities } from "src/localStorage/cities";
 import { CityWithWeatherData } from "src/types/cityWithWeatherData";
 import { CitiesState } from "./slice";
 import { addCityAsync } from "./actions";
@@ -23,9 +24,8 @@ export const addCityReducer = (
       );
 
       if (!cityExists) {
-        const newData = [...state.data, action.payload];
-        state.data = newData;
-        localStorage.setItem("cities", JSON.stringify(newData));
+        state.data = [...state.data, action.payload];
+        localStorageCities.add(action.payload);
       } else {
         // додати вивід помилки
         console.log("Місто вже додано.");

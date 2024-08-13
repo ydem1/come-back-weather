@@ -3,7 +3,7 @@ import { SocialMediaLinks } from "./SocialMediaLinks";
 
 export const Footer = () => (
   <footer>
-    <div className="container flex items-center justify-between mt-5">
+    <div className="container flex items-center justify-between my-5">
       <Logo />
       <SocialMediaLinks />
     </div>

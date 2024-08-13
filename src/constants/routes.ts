@@ -1,6 +1,6 @@
 export const PATHNAMES = {
   HOME: "/",
-  ALL_CITIES: "/all-cities",
+  ALL_CITIY: "/add-city",
   MY_CITIES: "/my-cities",
 
   NOT_FOUND: "/*",

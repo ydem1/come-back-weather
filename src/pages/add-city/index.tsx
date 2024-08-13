@@ -1,10 +1,10 @@
 import React, { FC } from "react";
 import { PageWrapper } from "src/components/Layouts/PageWrapper";
 
-const AllCities: FC = () => (
+const AddCity: FC = () => (
   <PageWrapper>
-    <h2>All Cities</h2>
+    <h2>Add City</h2>
   </PageWrapper>
 );
 
-export default AllCities;
+export default AddCity;

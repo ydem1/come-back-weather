@@ -8,7 +8,7 @@ export const NAVIGATION_LINKS = [
   },
   {
     id: 2,
-    href: PATHNAMES.ALL_CITIES,
-    label: "All Cities",
+    href: PATHNAMES.ALL_CITIY,
+    label: "Add City",
   },
 ]

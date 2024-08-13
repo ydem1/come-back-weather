@@ -16,6 +16,14 @@ code {
     monospace;
 }
 
+h1 {
+  @apply text-52 font-medium;
+}
+
+h2 {
+  @apply text-40 font-semibold;
+}
+
 .container {
   @apply max-w-360 w-full box-border mx-auto px-25 overflow-hidden;
 }

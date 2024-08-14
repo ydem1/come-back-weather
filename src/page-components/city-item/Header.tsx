@@ -12,7 +12,7 @@ interface Props {
 export const Header: FC<Props> = ({ cityName, main, description, icon }) => {
   return (
     <section className="container">
-      <div className="flex items-center justify-between">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between">
         <h2>{cityName}</h2>
         <div className="flex items-center">
           <div>

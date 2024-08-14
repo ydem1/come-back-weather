@@ -1,14 +1,20 @@
 import React, { FC } from "react";
 import { Skeleton } from "@mui/material";
+import { LogoSkeleton } from "../Logo/LogoSkeleton";
 import { NAVIGATION_LINKS } from "./constants";
 
 export const HeaderSkeleton: FC = () => (
   <header>
     <div className="container flex items-center justify-between py-5">
-      <Skeleton variant="rounded" width={340} height={66} />
+      <LogoSkeleton />
+
       <div className="flex gap-5">
         {NAVIGATION_LINKS.map(({ id }) => (
-          <Skeleton key={id} variant="rounded" width={100} height={45} />
+          <Skeleton
+            key={id}
+            className="w-20 lg:w-25 min-h-9 lg:min-h-11"
+            variant="rounded"
+          />
         ))}
       </div>
     </div>

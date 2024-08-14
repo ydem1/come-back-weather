@@ -7,7 +7,7 @@ interface Props {
 }
 
 export const ListWeatherCards: FC<Props> = ({ citiesWeather }) => (
-  <ul className="grid grid-cols-4 gap-5 py-5">
+  <ul className="grid xs:grid-cols-2 md:grid-cols-3 gl:grid-cols-4 gap-5 py-5">
     {citiesWeather.map(({ id, name, weather, main, wind }) => (
       <li key={id}>
         <WeatherCard

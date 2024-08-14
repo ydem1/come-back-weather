@@ -34,11 +34,11 @@ export const ListCities: React.FC<Props> = ({ cities }) => {
       {cities.map(({ id, weather, name, coord }) => (
         <React.Fragment key={id}>
           <ListItem alignItems="flex-start">
-            <ListItemAvatar>
-              <Link to={getItemPath(PATHNAMES.CITY_ITEM, { id })}>
+            <Link to={getItemPath(PATHNAMES.CITY_ITEM, { id })}>
+              <ListItemAvatar>
                 <Avatar alt={name} src={getImageUrl(weather[0].icon)} />
-              </Link>
-            </ListItemAvatar>
+              </ListItemAvatar>
+            </Link>
             <ListItemText
               primary={name}
               secondary={

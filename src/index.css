@@ -25,5 +25,5 @@ h2 {
 }
 
 .container {
-  @apply max-w-360 w-full box-border mx-auto px-25 overflow-hidden;
+  @apply max-w-360 w-full box-border mx-auto px-5 md:px-10 gl:px-15 xl:px-25 overflow-hidden;
 }

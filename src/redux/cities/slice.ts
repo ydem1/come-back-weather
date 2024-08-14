@@ -1,12 +1,12 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { localStorageCities } from "src/localStorage/cities";
-import { CityWithWeatherData } from "src/types/cityWithWeatherData";
+import { ICity } from "src/types/city";
 import { CITIES_SLICE_NAME } from "./actions";
 import { addCityReducer, removeCityReducer } from "./reducers";
 
 export interface CitiesState {
   isLoading: boolean;
-  data: CityWithWeatherData[];
+  data: ICity[];
 }
 
 const initialState: CitiesState = {

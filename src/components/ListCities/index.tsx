@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 import CloseIcon from "@mui/icons-material/Close";
 import {
   Alert,
@@ -12,34 +12,34 @@ import {
   ListItemText,
   Typography,
 } from "@mui/material";
-import { PATHNAMES } from "src/constants/routes";
 import { useAppDispatch } from "src/hooks/redux";
 import { removeCity } from "src/redux/cities/actions";
-import { CityWithWeatherData } from "src/types/cityWithWeatherData";
-import { getImageUrl } from "src/utils/getImageUrl";
-import { getItemPath } from "src/utils/getItemPath";
+import avatar from "src/assets/images/logo.png";
+// import { getItemPath } from "src/utils/getItemPath";
+// import { PATHNAMES } from "src/constants/routes";
+import { ICity } from "src/types/city";
 
 interface Props {
-  cities: CityWithWeatherData[];
+  cities: ICity[];
 }
 
 export const ListCities: React.FC<Props> = ({ cities }) => {
   const dispath = useAppDispatch();
 
-  const handleDeleteCity = (id: number) => {
-    dispath(removeCity(id));
+  const handleDeleteCity = (name: string) => {
+    dispath(removeCity(name));
   };
 
   return cities.length !== 0 ? (
     <List>
-      {cities.map(({ id, weather, name, coord }) => (
-        <React.Fragment key={id}>
+      {cities.map(({ name, lat, lon }) => (
+        <React.Fragment key={name}>
           <ListItem alignItems="flex-start">
-            <Link to={getItemPath(PATHNAMES.CITY_ITEM, { id })}>
-              <ListItemAvatar>
-                <Avatar alt={name} src={getImageUrl(weather[0].icon)} />
-              </ListItemAvatar>
-            </Link>
+            {/* <Link to={getItemPath(PATHNAMES.CITY_ITEM, { id })}> */}
+            <ListItemAvatar>
+              <Avatar alt={name} src={avatar} />
+            </ListItemAvatar>
+            {/* </Link> */}
             <ListItemText
               primary={name}
               secondary={
@@ -52,13 +52,13 @@ export const ListCities: React.FC<Props> = ({ cities }) => {
                   >
                     Coordinates -
                   </Typography>
-                  {` lat: ${coord.lat} lon: ${coord.lon}`}
+                  {` lat: ${lat} lon: ${lon}`}
                 </React.Fragment>
               }
             />
             <Button
               className="self-center"
-              onClick={() => handleDeleteCity(id)}
+              onClick={() => handleDeleteCity(name)}
             >
               <CloseIcon />
             </Button>

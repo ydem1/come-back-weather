@@ -1,15 +1,15 @@
-import { CityWithWeatherData } from "src/types/cityWithWeatherData";
+import { ICity } from "src/types/city";
 
 const SAVE_KEY = "cities";
 
 class Data {
-  private items: CityWithWeatherData[];
+  private items: ICity[];
 
   constructor() {
     this.items = this.load();
   }
 
-  private load(): CityWithWeatherData[] {
+  private load(): ICity[] {
     try {
       const items = localStorage.getItem(SAVE_KEY);
       return items ? JSON.parse(items) : [];
@@ -27,11 +27,11 @@ class Data {
     }
   }
 
-  public getAll(): CityWithWeatherData[] {
+  public getAll(): ICity[] {
     return this.items;
   }
 
-  public add(item: CityWithWeatherData) {
+  public add(item: ICity) {
     const newItems = [...this.items];
 
     newItems.push(item);
@@ -40,13 +40,11 @@ class Data {
     this.save();
   }
 
-  public remove(itemId: number) {
-    const newItems = this.items.filter((item) => item.id !== itemId);
+  public remove(itemName: string) {
+    const newItems = this.items.filter((item) => item.name !== itemName);
 
     this.items = newItems;
     this.save();
-
-    return itemId;
   }
 
   public clear(): void {

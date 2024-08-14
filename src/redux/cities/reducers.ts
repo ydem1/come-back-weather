@@ -1,6 +1,6 @@
 import { ActionReducerMapBuilder, PayloadAction } from "@reduxjs/toolkit";
 import { localStorageCities } from "src/localStorage/cities";
-import { CityWithWeatherData } from "src/types/cityWithWeatherData";
+import { ICity } from "src/types/city";
 import { addCityAsync, removeCity } from "./actions";
 import { CitiesState } from "./slice";
 
@@ -16,7 +16,7 @@ export const addCityReducer = (
 
   builder.addCase(
     addCityAsync.fulfilled,
-    (state, action: PayloadAction<CityWithWeatherData>) => {
+    (state, action: PayloadAction<ICity>) => {
       state.isLoading = false;
 
       const cityExists = state.data.some(
@@ -41,8 +41,8 @@ export const addCityReducer = (
 export const removeCityReducer = (
   builder: ActionReducerMapBuilderWithCitiesState
 ) => {
-  builder.addCase(removeCity, (state, action: PayloadAction<number>) => {
-    state.data = state.data.filter((city) => city.id !== action.payload);
+  builder.addCase(removeCity, (state, action: PayloadAction<string>) => {
+    state.data = state.data.filter((city) => city.name !== action.payload);
     localStorageCities.remove(action.payload);
   });
 };

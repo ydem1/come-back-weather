@@ -4,7 +4,6 @@ import { delay } from "src/helpers/delay";
 import { NotificationService } from "src/helpers/notifications";
 import { instance } from "src/services/api-client";
 import { ICity } from "src/types/city";
-import { CityWithWeatherData } from "src/types/cityWithWeatherData";
 
 export const CITIES_SLICE_NAME = "cities";
 
@@ -19,29 +18,13 @@ export const addCityAsync = createAsyncThunk(
     try {
       await delay();
 
-      const { data: city } = await instance.get<Array<ICity>>(
-        "/geo/1.0/direct",
-        {
-          params,
-        }
-      );
-
-      const { lat, lon } = city[0];
-
-      const { data } = await instance.get<CityWithWeatherData>(
-        "/data/2.5/weather/",
-        {
-          params: {
-            lat,
-            lon,
-            units: "metric",
-          },
-        }
-      );
+      const { data } = await instance.get<Array<ICity>>("/geo/1.0/direct", {
+        params,
+      });
 
       NotificationService.success(successfulResponses.addingCity);
 
-      return data;
+      return data[0];
     } catch ({ response }) {
       const errorText: string = response?.data?.message;
 
@@ -52,7 +35,7 @@ export const addCityAsync = createAsyncThunk(
   }
 );
 
-type RemoveCityPayload = number;
+type RemoveCityPayload = string;
 
 export const removeCity = createAction<RemoveCityPayload>(
   `${CITIES_SLICE_NAME}/removeCity`

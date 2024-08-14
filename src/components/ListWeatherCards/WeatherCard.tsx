@@ -14,6 +14,8 @@ import { getImageUrl } from "src/utils/getImageUrl";
 import { getItemPath } from "src/utils/getItemPath";
 import { PATHNAMES } from "src/constants/routes";
 import { ICity } from "src/types/city";
+import { getPropertiesWeatherCard } from "./constants";
+import { ListProperties } from "../ListProperties";
 
 export const WeatherCard: FC<ICity> = ({ ...city }) => {
   const { lat, lon } = city;
@@ -32,7 +34,7 @@ export const WeatherCard: FC<ICity> = ({ ...city }) => {
     fetchWeatherData();
   }, [fetchWeatherData]);
 
-  const { name, main, weather, wind } = cityWithWeatherData || {};
+  const { name, weather } = cityWithWeatherData || {};
 
   if (!cityWithWeatherData && !isLoading) {
     return null;
@@ -59,21 +61,9 @@ export const WeatherCard: FC<ICity> = ({ ...city }) => {
           </Typography>
         </Link>
 
-        <Typography variant="body2" color="text.secondary">
-          {`${main.temp} \u00B0C`}
-        </Typography>
-
-        <Typography variant="body2" color="text.secondary">
-          {weather[0].main}
-        </Typography>
-
-        <Typography variant="body2" color="text.secondary">
-          {weather[0].description}
-        </Typography>
-
-        <Typography variant="body2" color="text.secondary">
-          {`Speed of wind: ${wind.speed}`}
-        </Typography>
+        <ListProperties
+          properties={getPropertiesWeatherCard(cityWithWeatherData)}
+        />
       </CardContent>
 
       <CardActions>

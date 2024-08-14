@@ -1,3 +1,20 @@
+export interface WeatherMain {
+  temp: number;
+  feels_like: number;
+  temp_min: number;
+  temp_max: number;
+  pressure: number;
+  humidity: number;
+  sea_level?: number;
+  grnd_level?: number;
+}
+
+export interface WeatherWind {
+  speed: number;
+  deg: number;
+  gust?: number;
+}
+
 export interface CityWithWeatherData {
   coord: {
     lon: number;
@@ -10,22 +27,9 @@ export interface CityWithWeatherData {
     icon: string;
   }>;
   base: string;
-  main: {
-    temp: number;
-    feels_like: number;
-    temp_min: number;
-    temp_max: number;
-    pressure: number;
-    humidity: number;
-    sea_level?: number;
-    grnd_level?: number;
-  };
+  main: WeatherMain;
   visibility: number;
-  wind: {
-    speed: number;
-    deg: number;
-    gust?: number;
-  };
+  wind: WeatherWind;
   clouds: {
     all: number;
   };

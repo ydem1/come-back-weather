@@ -1,5 +1,6 @@
 import React, { FC, useEffect } from "react";
 import { Axis, Heading, Legend, LineSeries, Plot } from "react-plot";
+import { useMediaQuery } from "react-responsive";
 import { CircularProgress } from "@mui/material";
 import { useAppDispatch, useAppSelector } from "src/hooks/redux";
 import { getWeatherPlotDataAsync } from "src/redux/weatherPlotData/actions";
@@ -7,6 +8,7 @@ import {
   selectorWeatherPlotDataIsLoading,
   selectorWeatherPlotDataList,
 } from "src/redux/weatherPlotData/selector";
+import { SCREEN_BREAKPOINTS } from "src/constants/screenBreakpoints";
 
 interface Props {
   lat: number;
@@ -15,6 +17,13 @@ interface Props {
 
 export const WeatherPlot: FC<Props> = ({ lat, lon }) => {
   const dispatch = useAppDispatch();
+
+  const isLGScreenBreakpoint = useMediaQuery({
+    maxWidth: SCREEN_BREAKPOINTS.LG,
+  });
+
+  const width = isLGScreenBreakpoint ? 300 : 800;
+  const height = isLGScreenBreakpoint ? 550 : 250;
 
   const list = useAppSelector(selectorWeatherPlotDataList);
   const isLoading = useAppSelector(selectorWeatherPlotDataIsLoading);
@@ -48,29 +57,20 @@ export const WeatherPlot: FC<Props> = ({ lat, lon }) => {
     </div>
   ) : (
     <section className="container">
-      <Plot width={1200} height={250}>
-        <Heading
-          title="Temperature over Time"
-          subtitle="Hourly temperature forecast"
-        />
-        <LineSeries
-          data={processedData}
-          xAxis="x"
-          yAxis="y"
-          lineStyle={{ strokeWidth: 3 }}
-          label="Temperature (°C)"
-          displayMarkers={true}
-          markerShape="circle"
-        />
-        <Axis id="x" position="bottom" label="Time" displayPrimaryGridLines />
-        <Axis
-          id="y"
-          position="left"
-          label="Temperature (°C)"
-          displayPrimaryGridLines
-        />
-        <Legend position="right" />
-      </Plot>
+      <div className="flex justify-center">
+        <Plot width={width} height={height}>
+          <Heading title="Temperature" subtitle="Hourly temperature forecast" />
+          <LineSeries data={processedData} xAxis="x" yAxis="y" />
+          <Axis id="x" position="bottom" label="Time" displayPrimaryGridLines />
+          <Axis
+            id="y"
+            position="left"
+            label="Temperature (°C)"
+            displayPrimaryGridLines
+          />
+          <Legend position="right" />
+        </Plot>
+      </div>
     </section>
   );
 };

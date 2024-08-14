@@ -64,7 +64,7 @@ export const WeatherCard: FC<ICity> = ({ ...city }) => {
         </Typography>
 
         <Typography variant="body2" color="text.secondary">
-          {status}
+          {weather[0].main}
         </Typography>
 
         <Typography variant="body2" color="text.secondary">

@@ -1,5 +1,5 @@
 import * as React from "react";
-// import { Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import CloseIcon from "@mui/icons-material/Close";
 import {
   Alert,
@@ -14,9 +14,9 @@ import {
 } from "@mui/material";
 import { useAppDispatch } from "src/hooks/redux";
 import { removeCity } from "src/redux/cities/actions";
+import { getItemPath } from "src/utils/getItemPath";
+import { PATHNAMES } from "src/constants/routes";
 import avatar from "src/assets/images/logo.png";
-// import { getItemPath } from "src/utils/getItemPath";
-// import { PATHNAMES } from "src/constants/routes";
 import { ICity } from "src/types/city";
 
 interface Props {
@@ -35,11 +35,16 @@ export const ListCities: React.FC<Props> = ({ cities }) => {
       {cities.map(({ name, lat, lon }) => (
         <React.Fragment key={name}>
           <ListItem alignItems="flex-start">
-            {/* <Link to={getItemPath(PATHNAMES.CITY_ITEM, { id })}> */}
-            <ListItemAvatar>
-              <Avatar alt={name} src={avatar} />
-            </ListItemAvatar>
-            {/* </Link> */}
+            <Link
+              to={getItemPath(PATHNAMES.CITY_ITEM, {
+                lat,
+                lon,
+              })}
+            >
+              <ListItemAvatar>
+                <Avatar alt={name} src={avatar} />
+              </ListItemAvatar>
+            </Link>
             <ListItemText
               primary={name}
               secondary={

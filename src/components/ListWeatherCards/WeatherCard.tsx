@@ -16,7 +16,10 @@ import { ICity } from "src/types/city";
 import { CityWithWeatherData } from "src/types/cityWithWeatherData";
 
 export const WeatherCard: FC<ICity> = ({ ...city }) => {
-  const cityItemPath = getItemPath(PATHNAMES.CITY_ITEM, { id: city.lat });
+  const cityItemPath = getItemPath(PATHNAMES.CITY_ITEM, {
+    lat: city.lat,
+    lon: city.lon,
+  });
 
   const [isLoad, setIsLoad] = useState(false);
 

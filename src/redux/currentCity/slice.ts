@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { CityWithWeatherData } from "src/types/cityWithWeatherData";
-import { CURRNT_CITY_SLICE_NAME } from "./actions";
+import { CURRENT_CITY_SLICE_NAME } from "./actions";
 import { getCurrentCityReducer } from "./reducers";
 
 export interface CurrentCityState {
@@ -14,7 +14,7 @@ const initialState: CurrentCityState = {
 };
 
 export const { reducer: currentCity } = createSlice({
-  name: CURRNT_CITY_SLICE_NAME,
+  name: CURRENT_CITY_SLICE_NAME,
   initialState,
   reducers: {},
   extraReducers(builder) {

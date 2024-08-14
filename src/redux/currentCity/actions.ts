@@ -1,20 +1,21 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import { errorResponses } from "src/constants/responses";
-import { PATHNAMES } from "src/constants/routes";
-import { delay } from "src/helpers/delay";
-import { NotificationService } from "src/helpers/notifications";
 import { instance } from "src/services/api-client";
 import { history } from "src/services/history";
+import { delay } from "src/helpers/delay";
+import { NotificationService } from "src/helpers/notifications";
+import { errorResponses } from "src/constants/responses";
+import { PATHNAMES } from "src/constants/routes";
 import { CityWithWeatherData } from "src/types/cityWithWeatherData";
 
-export const CURRNT_CITY_SLICE_NAME = "currentCity";
+export const CURRENT_CITY_SLICE_NAME = "currentCity";
 
 interface GetCityAsyncParams {
-  id: string;
+  lat: number;
+  lon: number;
 }
 
 export const getCurrentCityAsync = createAsyncThunk(
-  `${CURRNT_CITY_SLICE_NAME}/fetchCity`,
+  `${CURRENT_CITY_SLICE_NAME}/fetchCity`,
   async (params: GetCityAsyncParams, { rejectWithValue }) => {
     try {
       await delay();

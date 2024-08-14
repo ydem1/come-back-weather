@@ -1,13 +1,12 @@
-import React, { FC, useEffect, useState } from "react";
+import React, { FC, useEffect } from "react";
 import { Axis, Heading, Legend, LineSeries, Plot } from "react-plot";
-import { instance } from "src/services/api-client";
-
-interface WeatherPlotData {
-  dt: number;
-  main: {
-    temp: number;
-  };
-}
+import { CircularProgress } from "@mui/material";
+import { useAppDispatch, useAppSelector } from "src/hooks/redux";
+import { getWeatherPlotDataAsync } from "src/redux/weatherPlotData/actions";
+import {
+  selectorWeatherPlotDataIsLoading,
+  selectorWeatherPlotDataList,
+} from "src/redux/weatherPlotData/selector";
 
 interface Props {
   lat: number;
@@ -15,9 +14,12 @@ interface Props {
 }
 
 export const WeatherPlot: FC<Props> = ({ lat, lon }) => {
-  const [weatherData, setWeatherData] = useState<WeatherPlotData[]>([]);
+  const dispatch = useAppDispatch();
 
-  const processedData = weatherData.map(({ dt, main }) => {
+  const list = useAppSelector(selectorWeatherPlotDataList);
+  const isLoading = useAppSelector(selectorWeatherPlotDataIsLoading);
+
+  const processedData = list.map(({ dt, main }) => {
     const date = new Date(dt * 1000);
     const hours = date.getHours();
 
@@ -28,24 +30,23 @@ export const WeatherPlot: FC<Props> = ({ lat, lon }) => {
   });
 
   useEffect(() => {
-    instance
-      .get("/data/2.5/forecast/", {
-        params: {
-          lat,
-          lon,
-          units: "metric",
-          cnt: 7,
-        },
+    dispatch(
+      getWeatherPlotDataAsync({
+        lat: +lat,
+        lon: +lon,
       })
-      .then((response) => {
-        setWeatherData(response.data.list);
-      })
-      .catch(() => {
-        setWeatherData([]);
-      });
-  }, [lat, lon]);
+    );
+  }, [dispatch, lat, lon]);
 
-  return (
+  if (!list && !isLoading) {
+    return null;
+  }
+
+  return isLoading ? (
+    <div className="flex justify-center items-center w-full h-96">
+      <CircularProgress />
+    </div>
+  ) : (
     <section className="container">
       <Plot width={1200} height={250}>
         <Heading

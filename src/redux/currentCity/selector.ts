@@ -3,7 +3,12 @@ import { RootState } from "src/redux/store";
 
 export const selectorCurrentCityState = (state: RootState) => state.currentCity;
 
-export const selectorCurrentCity = createSelector(
+export const selectorCurrentCityItem = createSelector(
   selectorCurrentCityState,
-  (currentCityState) => currentCityState
+  (currentCityState) => currentCityState.item
+);
+
+export const selectorCurrentCityIsLoading = createSelector(
+  selectorCurrentCityState,
+  (currentCityState) => currentCityState.isLoading
 );

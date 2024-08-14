@@ -13,4 +13,5 @@ export const errorResponses = {
   cityNotFound: "City not found, try entering a different name",
   cityAlreadyExists: "This city is already added, try adding another",
   currentCity: "Error receiving city data! 🥲",
+  weatherPlotData: "Error receiving weather data data! 🥲",
 };

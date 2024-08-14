@@ -1,5 +1,4 @@
-import { configureStore, combineReducers } from "@reduxjs/toolkit";
-
+import { combineReducers, configureStore } from "@reduxjs/toolkit";
 import { cities } from "./cities/slice";
 import { currentCity } from "./currentCity/slice";
 

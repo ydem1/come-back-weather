@@ -1,14 +1,14 @@
-import { PayloadAction, ActionReducerMapBuilder } from "@reduxjs/toolkit";
+import { ActionReducerMapBuilder, PayloadAction } from "@reduxjs/toolkit";
 import { localStorageCities } from "src/localStorage/cities";
 import { CityWithWeatherData } from "src/types/cityWithWeatherData";
-import { CitiesState } from "./slice";
 import { addCityAsync, removeCity } from "./actions";
+import { CitiesState } from "./slice";
 
 type ActionReducerMapBuilderWithCitiesState =
   ActionReducerMapBuilder<CitiesState>;
 
 export const addCityReducer = (
-  builder: ActionReducerMapBuilderWithCitiesState,
+  builder: ActionReducerMapBuilderWithCitiesState
 ) => {
   builder.addCase(addCityAsync.pending, (state) => {
     state.isLoading = true;
@@ -20,7 +20,7 @@ export const addCityReducer = (
       state.isLoading = false;
 
       const cityExists = state.data.some(
-        (city) => city.name === action.payload.name,
+        (city) => city.name === action.payload.name
       );
 
       if (!cityExists) {
@@ -30,7 +30,7 @@ export const addCityReducer = (
         // додати вивід помилки
         console.log("Місто вже додано.");
       }
-    },
+    }
   );
 
   builder.addCase(addCityAsync.rejected, (state) => {
@@ -39,7 +39,7 @@ export const addCityReducer = (
 };
 
 export const removeCityReducer = (
-  builder: ActionReducerMapBuilderWithCitiesState,
+  builder: ActionReducerMapBuilderWithCitiesState
 ) => {
   builder.addCase(removeCity, (state, action: PayloadAction<number>) => {
     state.data = state.data.filter((city) => city.id !== action.payload);

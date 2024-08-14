@@ -1,7 +1,7 @@
 import React, { FC, ReactNode } from "react";
 import cn from "classnames";
-import { HeaderSkeleton } from "../Header/HeaderSkeleton";
 import { FooterSkeleton } from "../Footer/FooterSkeleton";
+import { HeaderSkeleton } from "../Header/HeaderSkeleton";
 
 interface Props {
   children: ReactNode;

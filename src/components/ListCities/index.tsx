@@ -1,23 +1,23 @@
 import * as React from "react";
 import { Link } from "react-router-dom";
+import CloseIcon from "@mui/icons-material/Close";
 import {
+  Alert,
+  Avatar,
+  Button,
+  Divider,
   List,
   ListItem,
   ListItemAvatar,
-  Avatar,
   ListItemText,
   Typography,
-  Button,
-  Divider,
-  Alert,
 } from "@mui/material";
-import CloseIcon from "@mui/icons-material/Close";
+import { PATHNAMES } from "src/constants/routes";
 import { useAppDispatch } from "src/hooks/redux";
 import { removeCity } from "src/redux/cities/actions";
+import { CityWithWeatherData } from "src/types/cityWithWeatherData";
 import { getImageUrl } from "src/utils/getImageUrl";
 import { getItemPath } from "src/utils/getItemPath";
-import { CityWithWeatherData } from "src/types/cityWithWeatherData";
-import { PATHNAMES } from "src/constants/routes";
 
 interface Props {
   cities: CityWithWeatherData[];

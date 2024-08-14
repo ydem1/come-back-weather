@@ -1,4 +1,4 @@
-import { toast, Id } from "react-toastify";
+import { Id, toast } from "react-toastify";
 import {
   errorResponses,
   pendingResponses,
@@ -17,7 +17,7 @@ export class NotificationService {
 
   static updateToSuccess = (
     toastId: Id,
-    message: string = successfulResponses.default,
+    message: string = successfulResponses.default
   ) =>
     toast.update(toastId, {
       type: "success",
@@ -28,7 +28,7 @@ export class NotificationService {
 
   static updateToError = (
     toastId: Id,
-    message: string = errorResponses.default,
+    message: string = errorResponses.default
   ) =>
     toast.update(toastId, {
       type: "error",

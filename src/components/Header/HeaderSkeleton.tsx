@@ -1,7 +1,7 @@
 import React, { FC } from "react";
 import { Skeleton } from "@mui/material";
-import { LogoSkeleton } from "../Logo/LogoSkeleton";
 import { NAVIGATION_LINKS } from "./constants";
+import { LogoSkeleton } from "../Logo/LogoSkeleton";
 
 export const HeaderSkeleton: FC = () => (
   <header>

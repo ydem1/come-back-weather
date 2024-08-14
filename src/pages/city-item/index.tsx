@@ -1,13 +1,13 @@
 import React, { FC, useEffect } from "react";
 import { useParams } from "react-router-dom";
+import { PageWrapper } from "src/components/Layouts/PageWrapper";
+import { useAppDispatch, useAppSelector } from "src/hooks/redux";
+import { CityItemSkeleton } from "src/page-components/city-item/CityItemSkeleton";
 import { Header } from "src/page-components/city-item/Header";
 import { Temperature } from "src/page-components/city-item/Temperature";
 import { Wind } from "src/page-components/city-item/Wind";
-import { PageWrapper } from "src/components/Layouts/PageWrapper";
-import { useAppDispatch, useAppSelector } from "src/hooks/redux";
-import { selectorCurrentCity } from "src/redux/currentCity/selector";
 import { getCurrentCityAsync } from "src/redux/currentCity/actions";
-import { CityItemSkeleton } from "src/page-components/city-item/CityItemSkeleton";
+import { selectorCurrentCity } from "src/redux/currentCity/selector";
 
 const CityItem: FC = () => {
   const { id } = useParams();

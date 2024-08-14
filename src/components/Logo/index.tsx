@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
-import { PATHNAMES } from "src/constants/routes";
 import logo from "src/assets/images/logo.png";
+import { PATHNAMES } from "src/constants/routes";
 
 const LOGO_IMAGE_ALT_TEXT = "Weather ComeBack";
 

@@ -1,5 +1,5 @@
-import { Logo } from "../Logo";
 import { SocialMediaLinks } from "./SocialMediaLinks";
+import { Logo } from "../Logo";
 
 export const Footer = () => (
   <footer>

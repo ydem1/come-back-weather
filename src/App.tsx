@@ -2,10 +2,10 @@ import React, { ReactElement } from "react";
 import { Provider as ReduxProvider } from "react-redux";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import AppRoutes from "./routes/Router";
 import { store } from "./redux/store";
-import { history } from "./services/history";
 import CustomHistoryRouter from "./routes/CustomHistoryRouter";
+import AppRoutes from "./routes/Router";
+import { history } from "./services/history";
 
 function App(): ReactElement {
   return (

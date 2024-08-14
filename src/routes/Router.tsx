@@ -1,7 +1,7 @@
 import React, { FC } from "react";
 import { useRoutes } from "react-router-dom";
-import { Home, MyCities, AddCity, NotFound, CityItem } from "src/pages";
 import { PATHNAMES } from "src/constants/routes";
+import { AddCity, CityItem, Home, MyCities, NotFound } from "src/pages";
 
 const ROUTES = [
   {

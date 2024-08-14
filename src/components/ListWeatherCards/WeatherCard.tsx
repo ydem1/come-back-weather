@@ -8,9 +8,9 @@ import {
   CardMedia,
   Typography,
 } from "@mui/material";
+import { PATHNAMES } from "src/constants/routes";
 import { getImageUrl } from "src/utils/getImageUrl";
 import { getItemPath } from "src/utils/getItemPath";
-import { PATHNAMES } from "src/constants/routes";
 
 interface Props {
   id: number;

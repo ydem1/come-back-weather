@@ -1,5 +1,5 @@
 import React, { FC } from "react";
-import { Typography, Paper } from "@mui/material";
+import { Paper, Typography } from "@mui/material";
 
 export const AboutInfo: FC = () => (
   <section className="container">

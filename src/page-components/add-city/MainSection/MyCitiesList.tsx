@@ -1,7 +1,7 @@
 import React, { FC } from "react";
-import { selectorCities } from "src/redux/cities/selector";
-import { useAppSelector } from "src/hooks/redux";
 import { ListCities } from "src/components/ListCities";
+import { useAppSelector } from "src/hooks/redux";
+import { selectorCities } from "src/redux/cities/selector";
 
 export const MyCitiesList: FC = () => {
   const cities = useAppSelector(selectorCities);

@@ -21,7 +21,7 @@ h1 {
 }
 
 h2 {
-  @apply text-40 font-semibold;
+  @apply text-28 md:text-40 font-semibold;
 }
 
 .container {

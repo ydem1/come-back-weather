@@ -19,6 +19,9 @@ export const PopularCities: FC = () => {
         })
         .then((response) => {
           setPopularCities((current) => [...current, response.data]);
+        })
+        .catch(() => {
+          setPopularCities([]);
         });
     });
   }, []);

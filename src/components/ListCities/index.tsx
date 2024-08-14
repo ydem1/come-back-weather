@@ -9,6 +9,7 @@ import {
   Typography,
   Button,
   Divider,
+  Alert,
 } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
 import { useAppDispatch } from "src/hooks/redux";
@@ -29,7 +30,7 @@ export const ListCities: React.FC<Props> = ({ cities }) => {
     dispath(removeCity(id));
   };
 
-  return (
+  return cities.length !== 0 ? (
     <List>
       {cities.map(({ id, weather, name, coord }) => (
         <React.Fragment key={id}>
@@ -66,5 +67,7 @@ export const ListCities: React.FC<Props> = ({ cities }) => {
         </React.Fragment>
       ))}
     </List>
+  ) : (
+    <Alert className="mt-5" severity="info">List is empty.</Alert>
   );
 };

@@ -51,3 +51,15 @@ type RemoveCityPayload = number;
 export const removeCity = createAction<RemoveCityPayload>(
   `${CITIES_SLICE_NAME}/removeCity`
 );
+
+// вивід помилок
+// перезапит на картці
+// популар city додати у редакс?
+// адаптив
+// подивитися де можна менше передавати пропсів
+// поправити home page вивід інфи про проєкт
+// подивитися імпорти
+// налаштувати pritter eslint
+// test
+
+// ще один запит для на день (додатково)

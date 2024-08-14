@@ -11,7 +11,7 @@ const NotFound: FC = () => (
       <h2>404 Not Found Page</h2>
 
         <p>
-          Sorry, the page you are looking for doesn't exist. It might have been
+          Sorry, the page you are looking for doesn&#39;t exist. It might have been
           moved or deleted. Please click the button below to return to the
           homepage.
         </p>

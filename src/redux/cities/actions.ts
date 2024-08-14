@@ -4,6 +4,7 @@ import { delay } from "src/helpers/delay";
 import { NotificationService } from "src/helpers/notifications";
 import { errorResponses, successfulResponses } from "src/constants/responses";
 import { ICity } from "src/types/city";
+import { RootState } from "../store";
 
 export const CITIES_SLICE_NAME = "cities";
 
@@ -14,7 +15,7 @@ interface AddCityAsyncParams {
 
 export const addCityAsync = createAsyncThunk(
   `${CITIES_SLICE_NAME}/addCity`,
-  async (params: AddCityAsyncParams, { rejectWithValue }) => {
+  async (params: AddCityAsyncParams, { rejectWithValue, getState }) => {
     try {
       await delay();
 
@@ -22,9 +23,28 @@ export const addCityAsync = createAsyncThunk(
         params,
       });
 
+      if (data.length === 0) {
+        NotificationService.error(errorResponses.cityNotFound);
+
+        return rejectWithValue(errorResponses.cityNotFound);
+      }
+
+      const newCity = data[0];
+
+      const state = getState() as RootState;
+
+      const existingCity = state.cities.data.find(
+        (city) => city.name === newCity.name && city.country === newCity.country
+      );
+
+      if (existingCity) {
+        NotificationService.error(errorResponses.cityAlreadyExists);
+        return rejectWithValue(errorResponses.cityAlreadyExists);
+      }
+
       NotificationService.success(successfulResponses.addingCity);
 
-      return data[0];
+      return newCity;
     } catch ({ response }) {
       const errorText: string = response?.data?.message;
 

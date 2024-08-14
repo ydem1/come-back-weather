@@ -18,18 +18,8 @@ export const addCityReducer = (
     addCityAsync.fulfilled,
     (state, action: PayloadAction<ICity>) => {
       state.isLoading = false;
-
-      const cityExists = state.data.some(
-        (city) => city.name === action.payload.name
-      );
-
-      if (!cityExists) {
-        state.data = [...state.data, action.payload];
-        localStorageCities.add(action.payload);
-      } else {
-        // додати вивід помилки
-        console.log("Місто вже додано.");
-      }
+      state.data = [...state.data, action.payload];
+      localStorageCities.add(action.payload);
     }
   );
 

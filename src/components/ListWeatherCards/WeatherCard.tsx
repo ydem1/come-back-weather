@@ -1,4 +1,4 @@
-import { FC, useCallback, useEffect, useState } from "react";
+import { FC, useEffect } from "react";
 import { Link } from "react-router-dom";
 import {
   Button,
@@ -9,45 +9,24 @@ import {
   CircularProgress,
   Typography,
 } from "@mui/material";
-import { instance } from "src/services/api-client";
-import { delay } from "src/helpers/delay";
+import { useWeatherData } from "src/hooks/useWeatherData";
 import { getImageUrl } from "src/utils/getImageUrl";
 import { getItemPath } from "src/utils/getItemPath";
 import { PATHNAMES } from "src/constants/routes";
 import { ICity } from "src/types/city";
-import { CityWithWeatherData } from "src/types/cityWithWeatherData";
 
 export const WeatherCard: FC<ICity> = ({ ...city }) => {
+  const { lat, lon } = city;
+
   const cityItemPath = getItemPath(PATHNAMES.CITY_ITEM, {
-    lat: city.lat,
-    lon: city.lon,
+    lat,
+    lon,
   });
 
-  const [isLoad, setIsLoad] = useState(false);
-
-  const [cityWithWeatherData, setCityWithWeatherData] =
-    useState<CityWithWeatherData>(null);
-
-  const fetchWeatherData = useCallback(async () => {
-    setIsLoad(true);
-    await delay();
-    instance
-      .get<CityWithWeatherData>("/data/2.5/weather/", {
-        params: {
-          lat: city.lat,
-          lon: city.lon,
-          units: "metric",
-        },
-      })
-      .then((response) => {
-        setCityWithWeatherData(response.data);
-        setIsLoad(false);
-      })
-      .catch(() => {
-        setCityWithWeatherData(null);
-        setIsLoad(false);
-      });
-  }, [city.lat, city.lon]);
+  const { isLoading, cityWithWeatherData, fetchWeatherData } = useWeatherData(
+    lat,
+    lon
+  );
 
   useEffect(() => {
     fetchWeatherData();
@@ -55,19 +34,15 @@ export const WeatherCard: FC<ICity> = ({ ...city }) => {
 
   const { name, main, weather, wind } = cityWithWeatherData || {};
 
-  if (isLoad) {
-    return (
-      <div className="flex justify-center mt-20">
-        <CircularProgress />
-      </div>
-    );
-  }
-
-  if (!cityWithWeatherData && !isLoad) {
+  if (!cityWithWeatherData && !isLoading) {
     return null;
   }
 
-  return (
+  return isLoading ? (
+    <div className="flex justify-center mt-20">
+      <CircularProgress />
+    </div>
+  ) : (
     <Card>
       <Link to={cityItemPath}>
         <CardMedia

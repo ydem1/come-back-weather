@@ -39,6 +39,7 @@ export const addCityAsync = createAsyncThunk(
 
       if (existingCity) {
         NotificationService.error(errorResponses.cityAlreadyExists);
+
         return rejectWithValue(errorResponses.cityAlreadyExists);
       }
 

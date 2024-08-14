@@ -1,5 +1,7 @@
 import { createAction, createAsyncThunk } from "@reduxjs/toolkit";
+import { successfulResponses, errorResponses } from "src/constants/responses";
 import { delay } from "src/helpers/delay";
+import { NotificationService } from "src/helpers/notifications";
 import { instance } from "src/services/api-client";
 import { ICity } from "src/types/city";
 import { CityWithWeatherData } from "src/types/cityWithWeatherData";
@@ -37,9 +39,13 @@ export const addCityAsync = createAsyncThunk(
         }
       );
 
+      NotificationService.success(successfulResponses.addingCity);
+
       return data;
     } catch ({ response }) {
-      const errorText = response?.data?.message;
+      const errorText: string = response?.data?.message;
+
+      NotificationService.error(errorText || errorResponses.addingCity);
 
       return rejectWithValue(errorText);
     }
@@ -51,15 +57,3 @@ type RemoveCityPayload = number;
 export const removeCity = createAction<RemoveCityPayload>(
   `${CITIES_SLICE_NAME}/removeCity`
 );
-
-// вивід помилок
-// перезапит на картці
-// популар city додати у редакс?
-// адаптив
-// подивитися де можна менше передавати пропсів
-// поправити home page вивід інфи про проєкт
-// подивитися імпорти
-// налаштувати pritter eslint
-// test
-
-// ще один запит для на день (додатково)

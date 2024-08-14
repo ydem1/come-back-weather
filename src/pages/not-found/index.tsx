@@ -17,7 +17,7 @@ const NotFound: FC = () => (
         </p>
 
         <Link className="block mt-5" to={PATHNAMES.HOME}>
-          <Button variant="contained">Go Homу</Button>
+          <Button variant="contained">Go Home</Button>
         </Link>
     </section>
   </PageWrapper>

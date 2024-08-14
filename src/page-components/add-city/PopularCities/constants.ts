@@ -31,8 +31,8 @@ export const POPULAR_CITIES: ICity[] = [
   },
   {
     name: "Sydney",
-    lat: -33.868820,
-    lon: 151.209290,
+    lat: -33.86882,
+    lon: 151.20929,
     country: "AU",
     state: "New South Wales",
   },
@@ -59,9 +59,9 @@ export const POPULAR_CITIES: ICity[] = [
   },
   {
     name: "Cape Town",
-    lat: -33.924870,
+    lat: -33.92487,
     lon: 18.424055,
     country: "ZA",
     state: "Western Cape",
-  }
+  },
 ];

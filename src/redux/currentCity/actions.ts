@@ -26,7 +26,7 @@ export const getCurrentCityAsync = createAsyncThunk(
             ...params,
             units: "metric",
           },
-        }
+        },
       );
 
       return data;
@@ -39,5 +39,5 @@ export const getCurrentCityAsync = createAsyncThunk(
 
       return rejectWithValue(errorText);
     }
-  }
+  },
 );

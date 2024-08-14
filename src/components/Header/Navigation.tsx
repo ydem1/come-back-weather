@@ -8,10 +8,10 @@ export const Navigation = () => (
       {NAVIGATION_LINKS.map(({ id, href, label }) => (
         <li key={id}>
           <NavLink
-            className={({isActive}) =>
+            className={({ isActive }) =>
               cn(
                 "bg-blue-500 py-2 lg:py-3 px-2 lg:px-5 text-20 text-white rounded-lg hover:opacity-80",
-                { "bg-blue-700 hover:opacity-100": isActive }
+                { "bg-blue-700 hover:opacity-100": isActive },
               )
             }
             to={href}

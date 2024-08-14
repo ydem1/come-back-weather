@@ -5,6 +5,6 @@ export const PATHNAMES = {
   MY_CITIES: "/my-cities",
 
   CITY_ITEM: "/city-weather/:id",
-  
+
   NOT_FOUND: "/*",
 } as const;

@@ -23,7 +23,7 @@ export const addCityAsync = createAsyncThunk(
         "/geo/1.0/direct",
         {
           params,
-        }
+        },
       );
 
       const { lat, lon } = city[0];
@@ -36,7 +36,7 @@ export const addCityAsync = createAsyncThunk(
             lon,
             units: "metric",
           },
-        }
+        },
       );
 
       NotificationService.success(successfulResponses.addingCity);
@@ -49,11 +49,11 @@ export const addCityAsync = createAsyncThunk(
 
       return rejectWithValue(errorText);
     }
-  }
+  },
 );
 
 type RemoveCityPayload = number;
 
 export const removeCity = createAction<RemoveCityPayload>(
-  `${CITIES_SLICE_NAME}/removeCity`
+  `${CITIES_SLICE_NAME}/removeCity`,
 );

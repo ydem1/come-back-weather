@@ -25,5 +25,7 @@ export const ListWeatherCards: FC<Props> = ({ citiesWeather }) =>
       ))}
     </ul>
   ) : (
-    <Alert className="mt-5" severity="info">List is empty.</Alert>
+    <Alert className="mt-5" severity="info">
+      List is empty.
+    </Alert>
   );

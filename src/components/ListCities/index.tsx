@@ -68,6 +68,8 @@ export const ListCities: React.FC<Props> = ({ cities }) => {
       ))}
     </List>
   ) : (
-    <Alert className="mt-5" severity="info">List is empty.</Alert>
+    <Alert className="mt-5" severity="info">
+      List is empty.
+    </Alert>
   );
 };

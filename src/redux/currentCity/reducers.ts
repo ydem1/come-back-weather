@@ -7,7 +7,7 @@ type ActionReducerMapBuilderWithCurrentCityState =
   ActionReducerMapBuilder<CurrentCityState>;
 
 export const getCurrentCityReducer = (
-  builder: ActionReducerMapBuilderWithCurrentCityState
+  builder: ActionReducerMapBuilderWithCurrentCityState,
 ) => {
   builder.addCase(getCurrentCityAsync.pending, (state) => {
     state.isLoading = true;
@@ -18,7 +18,7 @@ export const getCurrentCityReducer = (
     (state, action: PayloadAction<CityWithWeatherData>) => {
       state.isLoading = false;
       state.item = action.payload;
-    }
+    },
   );
 
   builder.addCase(getCurrentCityAsync.rejected, (state) => {

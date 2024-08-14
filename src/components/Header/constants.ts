@@ -11,4 +11,4 @@ export const NAVIGATION_LINKS = [
     href: PATHNAMES.ALL_CITIY,
     label: "Add City",
   },
-]
+];

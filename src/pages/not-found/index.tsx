@@ -10,15 +10,15 @@ const NotFound: FC = () => (
     <section className="container">
       <h2>404 Not Found Page</h2>
 
-        <p>
-          Sorry, the page you are looking for doesn&#39;t exist. It might have been
-          moved or deleted. Please click the button below to return to the
-          homepage.
-        </p>
+      <p>
+        Sorry, the page you are looking for doesn&#39;t exist. It might have
+        been moved or deleted. Please click the button below to return to the
+        homepage.
+      </p>
 
-        <Link className="block mt-5" to={PATHNAMES.HOME}>
-          <Button variant="contained">Go Home</Button>
-        </Link>
+      <Link className="block mt-5" to={PATHNAMES.HOME}>
+        <Button variant="contained">Go Home</Button>
+      </Link>
     </section>
   </PageWrapper>
 );

@@ -1,0 +1,30 @@
+# Ignore artifacts:
+build
+coverage
+
+# Node modules
+node_modules
+
+# Environment files
+.env
+.env.*.local
+
+# Production files
+dist
+out
+
+# Lock files
+yarn.lock
+package-lock.json
+
+# Logs
+logs
+*.log
+
+# IDE files
+.vscode/
+.idea/
+.DS_Store
+
+# Other configs
+.eslintcache

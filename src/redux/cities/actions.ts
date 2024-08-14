@@ -1,8 +1,8 @@
 import { createAction, createAsyncThunk } from "@reduxjs/toolkit";
-import { errorResponses, successfulResponses } from "src/constants/responses";
+import { instance } from "src/services/api-client";
 import { delay } from "src/helpers/delay";
 import { NotificationService } from "src/helpers/notifications";
-import { instance } from "src/services/api-client";
+import { errorResponses, successfulResponses } from "src/constants/responses";
 import { ICity } from "src/types/city";
 
 export const CITIES_SLICE_NAME = "cities";

@@ -1,6 +1,6 @@
 import React, { FC } from "react";
-import { selectorCities } from "src/redux/cities/selector";
 import { useAppSelector } from "src/hooks/redux";
+import { selectorCities } from "src/redux/cities/selector";
 import { ListWeatherCards } from "src/components/ListWeatherCards";
 
 export const MyCitiesCards: FC = () => {

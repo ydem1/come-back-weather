@@ -1,6 +1,6 @@
 import React, { FC } from "react";
-import { PageWrapper } from "src/components/Layouts/PageWrapper";
 import { MyCitiesCards } from "src/page-components/my-cities/MyCitiesCards";
+import { PageWrapper } from "src/components/Layouts/PageWrapper";
 
 const MyCities: FC = () => (
   <PageWrapper>

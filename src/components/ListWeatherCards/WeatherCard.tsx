@@ -41,7 +41,7 @@ export const WeatherCard: FC<ICity> = ({ ...city }) => {
   }
 
   return isLoading ? (
-    <div className="flex justify-center items-center w-72 h-96">
+    <div className="flex justify-center items-center w-full h-96">
       <CircularProgress />
     </div>
   ) : (

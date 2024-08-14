@@ -1,4 +1,4 @@
-import { FC, useEffect, useState } from "react";
+import { FC, useCallback, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import {
   Button,
@@ -6,9 +6,11 @@ import {
   CardActions,
   CardContent,
   CardMedia,
+  CircularProgress,
   Typography,
 } from "@mui/material";
 import { instance } from "src/services/api-client";
+import { delay } from "src/helpers/delay";
 import { getImageUrl } from "src/utils/getImageUrl";
 import { getItemPath } from "src/utils/getItemPath";
 import { PATHNAMES } from "src/constants/routes";
@@ -26,8 +28,9 @@ export const WeatherCard: FC<ICity> = ({ ...city }) => {
   const [cityWithWeatherData, setCityWithWeatherData] =
     useState<CityWithWeatherData>(null);
 
-  useEffect(() => {
+  const fetchWeatherData = useCallback(async () => {
     setIsLoad(true);
+    await delay();
     instance
       .get<CityWithWeatherData>("/data/2.5/weather/", {
         params: {
@@ -46,10 +49,18 @@ export const WeatherCard: FC<ICity> = ({ ...city }) => {
       });
   }, [city.lat, city.lon]);
 
+  useEffect(() => {
+    fetchWeatherData();
+  }, [fetchWeatherData]);
+
   const { name, main, weather, wind } = cityWithWeatherData || {};
 
   if (isLoad) {
-    return <p>LOADING ....</p>;
+    return (
+      <div className="flex justify-center mt-20">
+        <CircularProgress />
+      </div>
+    );
   }
 
   if (!cityWithWeatherData && !isLoad) {
@@ -91,7 +102,9 @@ export const WeatherCard: FC<ICity> = ({ ...city }) => {
       </CardContent>
 
       <CardActions>
-        <Button size="small">Updata</Button>
+        <Button size="small" onClick={fetchWeatherData}>
+          Update
+        </Button>
         <Link to={cityItemPath}>
           <Button size="small">Learn More</Button>
         </Link>

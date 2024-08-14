@@ -6,6 +6,7 @@ import { selectorCurrentCity } from "src/redux/currentCity/selector";
 import { CityItemSkeleton } from "src/page-components/city-item/CityItemSkeleton";
 import { Header } from "src/page-components/city-item/Header";
 import { Temperature } from "src/page-components/city-item/Temperature/";
+import { WeatherPlot } from "src/page-components/city-item/WeatherPlot";
 import { Wind } from "src/page-components/city-item/Wind";
 import { PageWrapper } from "src/components/Layouts/PageWrapper";
 
@@ -35,6 +36,7 @@ const CityItem: FC = () => {
       <Header cityName={item.name} {...item.weather[0]} />
       <Temperature {...item.main} />
       <Wind {...item.wind} />
+      <WeatherPlot lat={+lat} lon={+lon} />
     </PageWrapper>
   );
 };

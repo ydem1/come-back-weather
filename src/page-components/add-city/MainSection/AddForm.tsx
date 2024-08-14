@@ -14,7 +14,7 @@ export const AddForm: FC = () => {
 
   const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
-    dispatch(addCityAsync({ q: cityQuery, limit: 1 }));
+    dispatch(addCityAsync({ q: cityQuery }));
     setCityQuery("");
   };
 

@@ -14,6 +14,8 @@ interface GetCityAsyncParams {
   lon: number;
 }
 
+const PARAM_UTILS = "metric";
+
 export const getCurrentCityAsync = createAsyncThunk(
   `${CURRENT_CITY_SLICE_NAME}/fetchCity`,
   async (params: GetCityAsyncParams, { rejectWithValue }) => {
@@ -25,7 +27,7 @@ export const getCurrentCityAsync = createAsyncThunk(
         {
           params: {
             ...params,
-            units: "metric",
+            units: PARAM_UTILS,
           },
         }
       );

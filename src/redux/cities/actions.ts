@@ -10,8 +10,9 @@ export const CITIES_SLICE_NAME = "cities";
 
 interface AddCityAsyncParams {
   q: string;
-  limit?: number;
 }
+
+const PARAM_LIMIT = 1;
 
 export const addCityAsync = createAsyncThunk(
   `${CITIES_SLICE_NAME}/addCity`,
@@ -20,7 +21,10 @@ export const addCityAsync = createAsyncThunk(
       await delay();
 
       const { data } = await instance.get<Array<ICity>>("/geo/1.0/direct", {
-        params,
+        params: {
+          ...params,
+          limit: PARAM_LIMIT,
+        },
       });
 
       if (data.length === 0) {

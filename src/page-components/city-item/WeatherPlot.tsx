@@ -29,14 +29,16 @@ export const WeatherPlot: FC<Props> = ({ lat, lon }) => {
   const isLoading = useAppSelector(selectorWeatherPlotDataIsLoading);
 
   const processedData = list.map(({ dt, main }) => {
-    const date = new Date(dt * 1000);
-    const hours = date.getHours();
-
     return {
-      x: hours,
+      x: dt,
       y: main.temp,
     };
   });
+
+  const formatXAxis = (value: number) => {
+    const date = new Date(value * 1000);
+    return date.toLocaleTimeString();
+  };
 
   useEffect(() => {
     dispatch(
@@ -61,7 +63,13 @@ export const WeatherPlot: FC<Props> = ({ lat, lon }) => {
         <Plot width={width} height={height}>
           <Heading title="Temperature" subtitle="Hourly temperature forecast" />
           <LineSeries data={processedData} xAxis="x" yAxis="y" />
-          <Axis id="x" position="bottom" label="Time" displayPrimaryGridLines />
+          <Axis
+            id="x"
+            position="bottom"
+            label="Time"
+            displayPrimaryGridLines
+            tickLabelFormat={formatXAxis}
+          />
           <Axis
             id="y"
             position="left"

@@ -58,7 +58,7 @@ export const AboutInfo: FC = () => (
         </Typography>
         <ul>
           <li>
-            Застосувати Weather API:{" "}
+            Застосувати Weather API:
             <a
               href="https://openweathermap.org/"
               target="_blank"

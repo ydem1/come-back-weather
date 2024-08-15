@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/come-back-weather/static/css/main.2a4b233c.css",
-    "main.js": "/come-back-weather/static/js/main.d237f730.js",
+    "main.js": "/come-back-weather/static/js/main.88c9edfe.js",
     "static/media/roboto-latin-700-normal.woff2": "/come-back-weather/static/media/roboto-latin-700-normal.4535474e1cf8598695ad.woff2",
     "static/media/roboto-latin-500-normal.woff2": "/come-back-weather/static/media/roboto-latin-500-normal.7077203b1982951ecf76.woff2",
     "static/media/roboto-latin-400-normal.woff2": "/come-back-weather/static/media/roboto-latin-400-normal.297d48e1b5a10c0831a9.woff2",
@@ -61,10 +61,10 @@
     "static/media/roboto-greek-ext-400-normal.woff": "/come-back-weather/static/media/roboto-greek-ext-400-normal.16eb83b4a3b1ea994243.woff",
     "index.html": "/come-back-weather/index.html",
     "main.2a4b233c.css.map": "/come-back-weather/static/css/main.2a4b233c.css.map",
-    "main.d237f730.js.map": "/come-back-weather/static/js/main.d237f730.js.map"
+    "main.88c9edfe.js.map": "/come-back-weather/static/js/main.88c9edfe.js.map"
   },
   "entrypoints": [
     "static/css/main.2a4b233c.css",
-    "static/js/main.d237f730.js"
+    "static/js/main.88c9edfe.js"
   ]
 }

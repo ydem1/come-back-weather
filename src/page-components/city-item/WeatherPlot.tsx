@@ -37,7 +37,7 @@ export const WeatherPlot: FC<Props> = ({ lat, lon }) => {
 
   const formatXAxis = (value: number) => {
     const date = new Date(value * 1000);
-    return date.toLocaleTimeString();
+    return date.getHours().toString();
   };
 
   useEffect(() => {
